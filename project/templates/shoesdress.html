@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Shoes
+{% endblock %}
+
+{% block main %}
+
+<div class="px-wide">
+  <img src="{{ dress }}" class="d-block w-100" alt="dress">
+
+</div>
+
+<div class="px-wide">
+
+    <div id="carousel_4" class="carousel slide" data-ride="carousel" data-interval="false">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{{url_for('static', filename='pinkshoes.png')}}" class="d-block w-100" alt="shoes">
+        </div>
+        {% for shoe in shoes %}
+            <div class="carousel-item">
+              <form action="/processshoedress" method="post">
+                <img src="{{url_for('static', filename= shoe["picture"] )}}" class="d-block w-100" id="{{url_for('static', filename= shoe["picture"] )}}" alt="{{ shoe["picture"] }}">
+                <input type="hidden" name="hidden4" id="hidden4" value="{{url_for('static', filename= shoe["picture"] )}}">
+                <input type="hidden" name="dress" value="{{ dress }}">
+                <button class="btn btn-primary button" type="submit">Confirm outfit</button>
+
+              </form>
+            </div>
+        {% endfor %}
+        </div>
+      <a class="carousel-control-prev" href="#carousel_4" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carousel_4" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+</div>
+{% endblock %}

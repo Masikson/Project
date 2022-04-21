@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Upload
+{% endblock %}
+
+{% block main %}
+
+      <form action = "/choose" method = "POST"
+        
+         <div class="form-group">
+            <select class="form-control" name="type">
+               <option disabled selected value ="">type</option>
+                
+                <option value="dresses">dresses</option>
+                <option value="tops and bottoms">tops and bottoms</option>
+               
+            </select>
+         </div>
+         
+         <div class="form-group">
+            <select class="form-control" name="weather">
+               <option disabled selected value ="">weather</option>
+               {% for item in WEATHER %} 
+                <option value="{{ item }}">{{ item }}</option>     
+               {% endfor %}
+            </select>
+         </div>
+         
+         <div class="form-group">
+            <select class="form-control" name="event">
+               <option disabled selected value ="">event</option>
+               {% for event in EVENTS %} 
+                <option value="{{ event }}">{{ event }}</option>     
+               {% endfor %}
+            </select>
+         </div>
+         
+      
+         <button class="btn btn-primary button" type="submit">Choose!</button>
+         
+          
+         
+         
+      </form>
+
+
+{% endblock %}
